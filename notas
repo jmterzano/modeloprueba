@@ -1,0 +1,45 @@
+ public $id;
+    public $cant;
+    public $usuario;
+
+ 
+    public function __construct($id,$cant,$usuario)  
+    {
+        $this->id=$id;
+        $this->cant=$cant;
+        $this->usuario=$usuario;
+   
+    }
+
+
+VENTAS
+
+
+      
+
+
+
+INDEX VENTAS
+
+  
+public static function modificar($lista,$id_producto)
+  {
+    if($lista != null)
+    {
+        $i=0;
+        foreach($lista as $value)
+        {
+            if($value->id == $id_producto)
+            {
+                unset($lista[$i]);
+            }
+            $i++;
+        }
+    }
+   
+
+    $file=fopen("productos.json",'w');
+    $rta=fwrite($file,json_encode($lista));
+    fclose($file);
+
+    return $lista;
